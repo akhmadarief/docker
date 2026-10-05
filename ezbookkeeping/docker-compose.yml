@@ -1,0 +1,16 @@
+services:
+  ezbookkeeping:
+    image: mayswind/ezbookkeeping
+    container_name: ezbookkeeping
+    restart: unless-stopped
+    hostname: "ezbookkeeping"
+    env_file: ".env"
+    volumes:
+      - "/etc/localtime:/etc/localtime:ro"
+      - "/var/log/ezbookkeeping:/ezbookkeeping/log" # make sure the UID:GID is 1000:1000
+    networks:
+      - nginx-upstream
+
+networks:
+  nginx-upstream:
+    external: true

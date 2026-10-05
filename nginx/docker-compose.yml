@@ -1,0 +1,25 @@
+services:
+  nginx:
+    image: nginx:stable-alpine
+    container_name: nginx
+    restart: unless-stopped
+    ports:
+      - 443:443
+    volumes:
+      - ./conf.d:/etc/nginx/conf.d
+      - ./snippets:/etc/nginx/snippets:ro
+      - ./fastcgi.conf:/etc/nginx/fastcgi.conf:ro
+      - /etc/ssl:/etc/ssl:ro
+      #- /var/log/nginx:/var/log/nginx
+      - /var/www:/var/www
+      #- phpmyadmin:/var/www/phpmyadmin
+    networks:
+      - nginx-upstream
+
+networks:
+  nginx-upstream:
+    external: true
+
+volumes:
+  phpmyadmin:
+    external: true

@@ -1,0 +1,7 @@
+**/.env
+
+transmission/config/*
+transmission/downloads/*
+transmission/watch/*
+
+nginx/ssl/*

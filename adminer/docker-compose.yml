@@ -1,0 +1,11 @@
+services:
+  adminer:
+    image: adminer
+    container_name: adminer
+    restart: unless-stopped
+    networks:
+      - nginx-upstream
+
+networks:
+  nginx-upstream:
+    external: true

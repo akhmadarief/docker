@@ -1,0 +1,12 @@
+services:
+  tinyauth:
+    container_name: tinyauth
+    image: ghcr.io/steveiliop56/tinyauth:v5
+    restart: unless-stopped
+    env_file: ".env"
+    networks:
+      - nginx-upstream
+
+networks:
+  nginx-upstream:
+    external: true

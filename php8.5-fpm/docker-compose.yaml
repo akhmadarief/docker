@@ -1,0 +1,15 @@
+services:
+  php:
+    #build: .
+    image: akhmadarief/php:8.5-fpm-alpine
+    container_name: php85-fpm
+    restart: unless-stopped
+    volumes:
+      - /var/www:/var/www
+      - /home/arief/transmission/downloads:/downloads
+    networks:
+      - nginx-upstream
+
+networks:
+  nginx-upstream:
+    external: true
